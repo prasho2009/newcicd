@@ -1,6 +1,6 @@
-FROM python:3
-ADD helloworld.py /
-RUN pip install flask
-RUN pip install flask_restful
-EXPOSE 3333
-CMD [ "python", "./helloworld.py"]
+ FROM node:12-alpine
+ RUN apk add --no-cache python g++ make
+ WORKDIR /app
+ COPY . .
+ RUN yarn install --production
+ CMD ["node", "src/index.js"]
